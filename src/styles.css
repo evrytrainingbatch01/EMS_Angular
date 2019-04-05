@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.jumbotronDesign{
+    color: white;
+    /* background-color: rgba(red, green, blue, 0.4); */
+    background-color: rgb(91, 38, 141);
+}

@@ -1,0 +1,65 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="jumbotron text-center jumbotronDesign" style="margin-bottom:0">
+    <h1>Evry Bank</h1>
+    <p>Resolve the all your financial problem!</p> 
+  </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+   <p *ngIf="SuccessMessage"><ngb-alert [dismissible]="false"  (close)="close()">Reset The Password Successfully</ngb-alert></p> 
+    <!-- Icon -->
+ <!--    <div class="fadeIn first">
+      <img src="/assets/images/loginBackground.jpg" width="10%" height="10%" id="icon" alt="User Icon" />
+    </div> -->
+    <div class="fadeIn first"><h3>Log In</h3></div> 
+    <!-- Login Form -->
+    <form [formGroup]="loginCredentials">
+      <input style="width: 70%" type="text" id="login" class="fadeIn second"  placeholder="logId" name="uname" formControlName="uname" required>
+      <input style="width: 70%" type="text" id="password" class="fadeIn third" placeholder="password" name="password" formControlName="password" required>
+      <input type="submit" class="fadeIn fourth" (click)="LoginUserSubmit(loginCredentials)" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" (click)="forgotPassword(content)">Forgot Password?</a>&nbsp;&nbsp;
+      <a class="underlineHover" style="float: left;cursor: pointer" routerLink="/Signup">Sign Up</a>
+      <a class="underlineHover" style="float: right;cursor: pointer" routerLink="/Home">Cancel</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- forgot Password popup -->
+
+<ng-template #content let-c="close" let-d="dismiss" >
+		<form [formGroup]="UpdatedCustomerPassword" >
+			<div class="modal-header"style="background: #435d7d ;">
+			  <h4 class="modal-title" id="modal-basic-title" style=" color: white" >Rest Password</h4>
+			  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true" style="color: white">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">	
+          <div class="form-group">
+              <label><b>Valid Email:</b></label>
+              <input type="text" class="form-control" formControlName="email" required>
+            </div>				
+					<div class="form-group">
+						<label><b>New Passowrd:</b></label>
+						<input type="text" class="form-control" formControlName="newpassword" required>
+					</div>
+<!-- 					<div class="form-group">
+						<label><b>confirm Password:</b></label>
+						<input type="text" class="form-control" formControlName="newpassword" required>
+					</div> -->
+					
+				</div>
+			<div class="modal-footer">
+			  <button type="submit" class="btn btn-outline-dark" (click)="ResetPassword(UpdatedCustomerPassword);d('Cross click')">Submit</button>
+			</div>
+		</form>
+  </ng-template>

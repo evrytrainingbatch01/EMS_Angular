@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" />
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
+
+</head>
+<body>
+<div>
+<div class="jumbotron text-center jumbotronDesign" style="margin-bottom:0">
+  <h1>Evry Bank</h1>
+  <p>Resolve the all your financial problem!</p> 
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    
+    <ul  class="navbar-nav  ml-auto">
+        <li class="nav-item ">
+            <!--     <a class="nav-link" routerLink="/Login">Logout</a> -->
+            <a class="nav-link"  routerLink="/Login" style="cursor:pointer;"><span class="glyphicon glyphicon-log-in" ></span> Profile</a>
+              </li>
+      <li class="nav-item ">
+    <!--     <a class="nav-link" routerLink="/Login">Logout</a> -->
+    <a  class="nav-link"  routerLink="/Home" style="cursor:pointer;"><span class="glyphicon glyphicon-logout" ></span> Logout</a>
+      </li>
+    </ul>
+  </div>  
+</nav>
+<div>
+<div class="sidenav">
+  <a (click)="account_details()">AccountDetails</a>
+  <a (click)="transfer()">TransferMoney</a>
+  <a (click)="checktransactions()">MyTransactions</a>
+  <a (click)="checkbalance()">CheckBalance</a>
+</div>
+
+<div class="main" *ngIf="general">
+  <h1>Welcome .... Srinivasa Rao</h1>
+  <p>plesae proceed with transactions </p>
+</div>
+</div>
+<div class="main" *ngIf="ac_details">
+  <table aria-colspan="2">
+    <h1>Account Details</h1>
+    <tr><th>Name:</th><td>Sriivasa Rao</td></tr>
+    <tr><th>Account_Number :</th><td>56782345</td></tr>
+    <tr><th>Account_Type:</th><td>savings</td></tr>
+    <tr><th>Balance:</th><td>25000₹</td></tr>
+
+  </table>
+</div>
+
+<div class="main" *ngIf="transfer_details">
+  <form>
+    <h1>Transfer Money</h1>
+    <table>
+    <tr><th>From Account:</th><td><input type="text"  name="account_number" value="65782345"/></td></tr>
+    <tr><th>to Beneficiary Account: </th><td><input type="text"  name="beneficiary_ac_number"/></td></tr>
+    <tr><th>Amount:</th><td><input type="text"  name="amout"><td></tr>
+    <tr><td></td><td><button>Transfer</button></td></tr>
+  </table>
+  </form>
+</div>
+<div class="main" *ngIf="balance">
+  <h1>Balance Details:</h1>
+  <h3 class="balance">your current balance is : 25000₹</h3>
+</div>
+<div class="main" *ngIf="transactions">
+  <h1>Transactions:</h1>
+  <table>
+    <tr><th>Transaction_Id</th><th>Transaction_Type</th><th>Amount</th></tr>
+    <tr><td>1</td><td>credited</td><td>5000₹</td></tr>
+    <tr><td>2</td><td>debited</td><td>2000₹</td></tr>
+    <tr><td>3</td><td>credited</td><td>15000₹</td></tr>
+    <tr><td>4</td><td>debited</td><td>3000₹</td></tr>
+    <tr><td>5</td><td>debited</td><td>10000₹</td></tr>
+    <tr><td></td><td class="balance1">Balance</td><td class="balance1">25000₹</td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  <p><b>CopyRights@Evry Bank</b></p>
+</div>
+</div>
+</body>
+</html>
+
+
+
+<router-outlet></router-outlet>
+

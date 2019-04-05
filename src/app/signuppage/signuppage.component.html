@@ -1,0 +1,169 @@
+<div class="jumbotron text-center jumbotronDesign" style="margin-bottom:0">
+  <h1>Evry Bank</h1>
+  <p>Resolve the all your financial problem!</p> 
+</div>
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+
+
+/* Set a style for all buttons */
+button {
+  background-color:blue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 5px solid #888;
+  width: 50%;
+  height: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 55px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+.registrationsuccessmessage{
+
+background-color: chocolate;
+text-align: center;
+}
+</style>
+<body>
+  
+  <form class="modal-content" [formGroup]="registration_details" (ngSubmit)="onClick(registration_details)">
+    
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to register.</p>
+      <hr>
+      <label for="username"><b>UserName:</b></label>
+      <input type="text" class="form-control col-md-9"  placeholder="Enter UserName" name="username" formControlName="name">
+
+      <label for="emailid"><b>Email_Id:</b></label>
+      <input type="text" class="form-control col-md-9"  placeholder="Enter Email_id" name="emailid" formControlName="emailId">
+      <label for="dateofbirth"><b>Date of Birth:</b></label>
+      <input type="date" class="form-control col-md-9"  name="dateofbirth" formControlName="dateOfBirth"><br><br>
+      <label for="dateofbirth"><b>Address:</b></label>
+      <input type="text" class="form-control col-md-9"  placeholder="Enter Address" name="address" formControlName="address"><br>
+      <label for="city"><b>City:</b></label>
+      <select formControlName="city" class="form-control col-md-9" >
+          <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+          </select><br><br>
+      <label for="country"><b>Country:</b></label>
+      <select formControlName="country" class="form-control col-md-9" >
+          <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+          </select><br><br>
+      <label for="mobileno"><b>Mobile No:</b></label>
+      <input type="text" class="form-control col-md-9"  placeholder="Enter Mobile No" name="mobile_no" formControlName="mobileNo">
+      
+      
+     <div class="row col-md-12">
+       <button style="left: 6%;" class="btn btn-success col-md-2"> SignUp </button>
+       <button style="left:65% ;" class="btn btn-warning col-md-2" routerLink="/Home"> Cancel </button>
+
+     </div>
+  
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      
+      <P class="registrationsuccessmessage" id="success"></P>
+  </form>
+ 
+</body>
+</html>

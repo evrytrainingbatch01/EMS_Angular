@@ -1,0 +1,65 @@
+.jumbotronDesign{
+    color: white;
+    /* background-color: rgba(red, green, blue, 0.4); */
+    background-color: rgb(91, 38, 141);
+}
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  
+
+.sidenav {
+  height: 51%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 42%;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20 px;
+}
+
+.footer {
+  height: 7%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 93%;
+  left: 0;
+  background-color:pink;
+  overflow-x: hidden;
+  text-align: center;
+
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 50%; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.balance{
+  background-color: brown;
+  width: 60%;
+  color: white;
+}
+.balance1{
+  background-color:cyan;
+  width: 25%
+}
