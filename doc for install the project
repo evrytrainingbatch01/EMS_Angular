@@ -1,0 +1,4 @@
+1.Download files.
+2. open cmd with location write "npm install".// for installing  all packages
+3. if boostrap error, then write "npm install bootstrap"
+4. run the project 
