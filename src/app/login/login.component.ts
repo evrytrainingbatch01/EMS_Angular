@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   loginCredentials:FormGroup;
   loginResponse;
 loginDetails:LoginDetails=null;
-  constructor(private FormBuilder:FormBuilder,private router:Router,private LoginService:LoginService,private modalService: NgbModal,private alertConfig:NgbAlertConfig,private lss:LocalStorageService) { }
+  constructor(private FormBuilder:FormBuilder,private router:Router,private LoginService:LoginService,private modalService: NgbModal,private alertConfig:NgbAlertConfig,private LocalStorageService:LocalStorageService) { }
 
   ngOnInit() {
     this.loginCredentials=this.FormBuilder.group({
@@ -30,17 +30,15 @@ loginDetails:LoginDetails=null;
   
   
   response;
-  LoginUserSubmit(data){
-console.log(data);
-// this.loginDetails.uname=data.value.uname;
+/*   LoginUserSubmit(data){
+console.log(data); */
+ //this.loginDetails.uname=data.value.uname;
 // this.loginDetails.password=data.value.password;
 //call service
-if(data.value.uname==undefined && data.value.password==undefined){
-  alert("Please make sure to enter the username and password before submitting ");
-
-  }
-  else{
-    this.LoginService.checkLoginCredentials(this.loginDetails)
+/* alert(data.value.uname);
+if(data.value.uname!=null && data.value.password!=null){
+  alert("alkdassdlksajdlkjsdajkldlkjdjajdjsakjlkjadk") */
+ /*  this.LoginService.checkLoginCredentials(this.loginDetails)
   .subscribe(
     data  => {
     console.log("POST Response is ", data);
@@ -65,48 +63,100 @@ if(data.value.uname==undefined && data.value.password==undefined){
     }
     
     ); 
+     */
+ /*  }else{
+    
+    alert("Please make sure to enter the username and password before submitting ");
 
    
-  }   
-//   if(this.response=="success"){
-//   this.Router.navigate(['/LoginSuccess']);
-//   }else{
-//   alert("wrong Login or password Please give valid Credentials !! ");
-//   }
-
-// }else{
-//   alert(" Login or password Empty Please give valid Credentials !! ");
-// }
-//this.response=this.LoginService.check();
-//alert(JSON.stringify(this.response));
-//this.Router.navigate(['/Customer']);
+  }   */
   
-  // UpdatedCustomerPassword;
-  // forgotPassword(content){
-  //   //alert("want to change password");
-  //   this.modalService.open(content);
-  //   this.UpdatedCustomerPassword=new FormGroup({
-  //     email: new FormControl(),
-  //     newpassword:new FormControl()
-  //     }) 
-  // }
-  // SuccessMessage=false;
-  // responseOfResetPassword;
-  // ResetPassword(data){
-  //   alert(JSON.stringify(data.value));
-  //   //call service------
-  //   this.responseOfResetPassword= this.LoginService.ResetPassword(data.value);
+  
+//}
 
-  //   //alert(JSON.stringify(this.responseOfResetPassword));
-  //   if(this.responseOfResetPassword=="success"){
-  //     this.alertConfig.type='success';
-  //     this.SuccessMessage=true;
-  //   }
+LoginUserSubmit(data){
+console.log(data.value);
+//call service
+if(data.value.uname!=null && data.value.password ){
+this.LoginService.checkLoginCredentials(data.value)
+.subscribe(
+  data  => {
+  console.log("POST Response is ", data);
+  this.loginResponse=data;
+  console.log(JSON.stringify(this.loginResponse));
+  if(this.loginResponse!=null)
+  {
+    this.LocalStorageService.store("accId",this.loginResponse.customeAccountId);
+    this.LocalStorageService.store("custName",this.loginResponse.name);
+  //  document.getElementById("success").innerHTML="Hi..."+this.userdetails.name+" something went wrong . Please try again";
+  this.router.navigate(['/LoginSuccess'])
+}else{
+  alert("Username or Password entered are wrong . please verify and try again.") ; 
+    
+   }
 
-  // }
-  // close(){
- 
-  //   this.alertConfig.dismissible=true;
-  // }
+  },
+  error  => {
+    alert("Username or Password entered are wrong . please verify and try again.") ; 
+  console.log("Error", error);
+  
+  }
+  
+  ); 
 
-}}
+}else{
+alert(" Login or password Empty Please give valid Credentials !! ");
+}
+
+}
+
+UpdatedCustomerPassword;
+forgotPassword(content){
+  alert("want to change password");
+  this.modalService.open(content);
+  this.UpdatedCustomerPassword=new FormGroup({
+    email: new FormControl(),
+    newpassword:new FormControl()
+    }) 
+}
+
+SuccessMessage=false;
+responseOfResetPassword;
+ResetPassword(data){
+  alert(JSON.stringify(data.value));
+  //call service------
+  this.responseOfResetPassword= this.LoginService.ResetPassword(data.value)
+  .subscribe(
+    
+    data  => {
+    
+    console.log("PUT Request is successful ", data);
+    this.responseOfResetPassword=data;
+    //alert(this.responseOfResetPassword);
+
+      //alert(JSON.stringify(this.responseOfResetPassword));
+  if(this.responseOfResetPassword){
+    this.alertConfig.type='success';
+    this.SuccessMessage=true;
+  }else{
+    alert("some thing went wrong");
+  }
+    },
+    
+    error  => {
+      console.log("Error", error);
+     // this.resetpass=false;
+      alert("some thing went wrong");
+    }
+    
+    );
+
+
+
+}
+close(){
+
+  this.alertConfig.dismissible=true;
+}
+
+}

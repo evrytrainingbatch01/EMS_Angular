@@ -4,6 +4,7 @@ import{Router} from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { UserDetails } from '../util/userdetails.model';
 import { isNull } from '@angular/compiler/src/output/output_ast';
+import {LocalStorageService} from 'ngx-webstorage';
 
 
 
@@ -19,7 +20,7 @@ export class SignuppageComponent implements OnInit {
 registration_details:FormGroup;
 userdetails:UserDetails=new UserDetails();
 singupResponse=null;
-  constructor(private formbuilder:FormBuilder,private _servicetospringboot: CustomerService,private router:Router) { }
+  constructor(private formbuilder:FormBuilder,private _servicetospringboot: CustomerService,private router:Router, private LocalStorageService:LocalStorageService) { }
 
   ngOnInit() {
 
@@ -37,9 +38,6 @@ singupResponse=null;
   onClick(data)
   {
 console.log(data);
-
-
-
 
 this.userdetails.name=data.value.name;
 this.userdetails.emailId=data.value.emailId;
@@ -65,6 +63,7 @@ this._servicetospringboot.addUser(this.userdetails)
   else{
     alert("Please note Login id and password for login purpose. Login Id: "+this.singupResponse.loginId+
     "  Password:  "+this.singupResponse.password);
+    this.LocalStorageService.store("custId",this.singupResponse.id);
   this.router.navigate(['/Login'])
   }
  },

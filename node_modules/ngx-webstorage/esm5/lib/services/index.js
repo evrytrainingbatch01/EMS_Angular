@@ -1,0 +1,12 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { LocalStorageServiceProvider } from './localStorage';
+import { SessionStorageServiceProvider } from './sessionStorage';
+/** @type {?} */
+export var Services = [
+    LocalStorageServiceProvider,
+    SessionStorageServiceProvider
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZ3gtd2Vic3RvcmFnZS8iLCJzb3VyY2VzIjpbImxpYi9zZXJ2aWNlcy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsT0FBTyxFQUFDLDJCQUEyQixFQUFDLE1BQU0sZ0JBQWdCLENBQUM7QUFFM0QsT0FBTyxFQUFDLDZCQUE2QixFQUFDLE1BQU0sa0JBQWtCLENBQUM7O0FBRS9ELE1BQU0sS0FBTyxRQUFRLEdBQWU7SUFDbkMsMkJBQTJCO0lBQzNCLDZCQUE2QjtDQUM3QiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7TG9jYWxTdG9yYWdlU2VydmljZVByb3ZpZGVyfSBmcm9tICcuL2xvY2FsU3RvcmFnZSc7XG5pbXBvcnQge1Byb3ZpZGVyfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7U2Vzc2lvblN0b3JhZ2VTZXJ2aWNlUHJvdmlkZXJ9IGZyb20gJy4vc2Vzc2lvblN0b3JhZ2UnO1xuXG5leHBvcnQgY29uc3QgU2VydmljZXM6IFByb3ZpZGVyW10gPSBbXG5cdExvY2FsU3RvcmFnZVNlcnZpY2VQcm92aWRlcixcblx0U2Vzc2lvblN0b3JhZ2VTZXJ2aWNlUHJvdmlkZXJcbl07XG4iXX0=
