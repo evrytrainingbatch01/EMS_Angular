@@ -7,4 +7,6 @@ address:string;
 city:string;
 country:string;
 mobileNo:string;
+loginId:string;
+password:string;
 } 

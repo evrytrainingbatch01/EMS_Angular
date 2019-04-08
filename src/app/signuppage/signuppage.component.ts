@@ -3,6 +3,7 @@ import {FormGroup,FormControl,FormBuilder,FormsModule,Validators} from '@angular
 import{Router} from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { UserDetails } from '../util/userdetails.model';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -17,7 +18,8 @@ export class SignuppageComponent implements OnInit {
   countries:String[]=["India","Canada","USA","Afghanistan","Argentina","Egypt","Poland","Swaziland","Zimbabwe",""]
 registration_details:FormGroup;
 userdetails:UserDetails=new UserDetails();
-  constructor(private formbuilder:FormBuilder,private _servicetospringboot: CustomerService) { }
+singupResponse=null;
+  constructor(private formbuilder:FormBuilder,private _servicetospringboot: CustomerService,private router:Router) { }
 
   ngOnInit() {
 
@@ -36,7 +38,6 @@ userdetails:UserDetails=new UserDetails();
   {
 console.log(data);
 
-document.getElementById("success").innerHTML="Hi..."+data.value.name+"  you are  registered successfully. Please Login";
 
 
 
@@ -52,11 +53,37 @@ this._servicetospringboot.addUser(this.userdetails)
 .subscribe(
   (data:UserDetails)=>{
     console.log(JSON.stringify(data));
+    this.singupResponse=data;
+    console.log(data.loginId);
+    console.log(data.password);
+    console.log(this.singupResponse);
+
+    if(this.singupResponse.name==null)
+ {
+  document.getElementById("success").innerHTML="Hi..."+this.userdetails.name+" something went wrong . Please try again";
  }
- );
+  else{
+    alert("Please note Login id and password for login purpose. Login Id: "+this.singupResponse.loginId+
+    "  Password:  "+this.singupResponse.password);
+  this.router.navigate(['/Login'])
+  }
+ },
+ error  => {
+    
+  console.log("Error", error);
+  if(error!=null)
+ {
+  document.getElementById("success").innerHTML="Hi..."+this.userdetails.name+" something went wrong . Please try again";
+ }
+  
   }
 
   
+ );
+
+ 
+
+}
 
   
 

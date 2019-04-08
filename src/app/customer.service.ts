@@ -41,7 +41,7 @@ export class CustomerService {
 
 
 
-  private url: string ='http://192.168.0.170:3759/addCustomer';
+  private url: string ='http://192.168.0.149:3759/addCustomer';
 
 
 //   getEmployees():Observable<IEmployee[]>{

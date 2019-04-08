@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpHeaders} from '@angular/common/http';
 import {HttpClient} from '@angular/common/http';
+import { LoginDetails } from './util/loginDetails.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,31 +10,19 @@ import {HttpClient} from '@angular/common/http';
 export class LoginService {
 
   constructor(private httpClient:HttpClient) { }
-  checkLoginCredentials(inputs){
-    let res;
-/*     this.httpClient.post("http://localhost:1010/SpringMVC-AMS/employee/addEmployee",
-    {"name":"Das",
-    "password":"123456",
-    "emailId":"das@gmail.com",
-    "phone":"12345678900",
-    "address":"bangalore"
+  checkLoginCredentials(loginDetails:LoginDetails):Observable<LoginDetails>{
+    
+    alert("request reached to service method");
+    alert(JSON.stringify(loginDetails));
+  return this.httpClient.post<LoginDetails>("http://192.168.0.149:3759/login/552/"+loginDetails.uname+"/"+loginDetails.password,loginDetails,
+  {
+    headers: new HttpHeaders({
+   'Content-Type':'application/json'
+     })
     })
-    .subscribe(
-    data  => {
-    console.log("POST Request is successful ", data);
-    res=data;
-
-    },
-    error  => {
     
-    console.log("Error", error);
     
-    }
     
-    ); */
-    
-    res="success";
-    return res;
   }
 
   ResetPassword(data){
