@@ -14,7 +14,7 @@ export class CustomerService {
 acc_id;
   constructor(private http:HttpClient,private LocalStorageService:LocalStorageService) {
    this.acc_id=this.LocalStorageService.retrieve("custid");
-   alert(this.acc_id);
+   //alert(this.acc_id);
    }
   getAllCustomerList(){
     let CustomerList=[
@@ -51,13 +51,6 @@ acc_id;
   private url: string ='http://192.168.0.149:3759/addCustomer';
 
 
-//   getEmployees():Observable<IEmployee[]>{
-//     return this.http.get<IEmployee[]>(this.url)
-//     .pipe(tap(data => alert(JSON.stringify(data))) , catchError(this.errorHandler))
-// }
-// errorHandler(error: HttpErrorResponse){
-// return observableThrowError(error.message || "Server Error");
-// }
 
 addUser(user:UserDetails):Observable<UserDetails>
 {

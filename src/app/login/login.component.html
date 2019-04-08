@@ -11,10 +11,7 @@
   <div id="formContent">
     <!-- Tabs Titles -->
    <p *ngIf="SuccessMessage"><ngb-alert [dismissible]="false"  (close)="close()">Reset The Password Successfully</ngb-alert></p> 
-    <!-- Icon -->
- <!--    <div class="fadeIn first">
-      <img src="/assets/images/loginBackground.jpg" width="10%" height="10%" id="icon" alt="User Icon" />
-    </div> -->
+
     <div class="fadeIn first"><h3>Log In</h3></div> 
     <!-- Login Form -->
     <form [formGroup]="loginCredentials">
@@ -52,11 +49,6 @@
 						<label><b>New Passowrd:</b></label>
 						<input type="text" class="form-control" formControlName="newpassword" required>
 					</div>
-<!-- 					<div class="form-group">
-						<label><b>confirm Password:</b></label>
-						<input type="text" class="form-control" formControlName="newpassword" required>
-					</div> -->
-					
 				</div>
 			<div class="modal-footer">
 			  <button type="submit" class="btn btn-outline-dark" (click)="ResetPassword(UpdatedCustomerPassword);d('Cross click')">Submit</button>
