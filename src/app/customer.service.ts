@@ -3,13 +3,17 @@ import { HttpHeaders ,HttpClient} from '@angular/common/http';
 import { UserDetails } from './util/userDetails.model';
 import { Observable } from 'rxjs';
 import { AccountDetails } from './util/account_details';
+import {LocalStorageService} from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-
-  constructor(private http:HttpClient) { }
+acc_id;
+  constructor(private http:HttpClient,private LocalStorageService:LocalStorageService) {
+   this.acc_id=this.LocalStorageService.retrieve("custid");
+   alert(this.acc_id);
+   }
   getAllCustomerList(){
     let CustomerList=[
       {"name":"Thomas Hardy",
@@ -66,11 +70,11 @@ addUser(user:UserDetails):Observable<UserDetails>
 
 getAccountDetails():Observable<AccountDetails>
 {
-  return this.http.get<AccountDetails>("http://localhost:3759/getAccountDetails/<account_id>");
+  return this.http.get<AccountDetails>("http://192.168.0.149:3759/getAccountDetails/"+this.acc_id);
 }
 
-getBalance():Observable<AccountDetails>
+getBalance()
 {
-  return this.http.get<AccountDetails>("http://localhost:3759/checkBalance/<account_id>");
+  return this.http.get("http://192.168.0.149:3759/checkBalance/"+this.acc_id);
 }
 }
