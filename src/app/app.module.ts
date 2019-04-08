@@ -15,6 +15,7 @@ import { LoginService } from './login.service';
 import { SignuppageComponent } from './signuppage/signuppage.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AppGlobalsService } from './app-globals.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ProfileComponent } from './profile/profile.component';
     NgbModule.forRoot(),
     HttpClientModule
   ],
-  providers: [CustomerService,LoginService],
+  providers: [CustomerService,LoginService,AppGlobalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
