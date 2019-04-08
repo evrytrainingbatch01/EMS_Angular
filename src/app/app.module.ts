@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { SignuppageComponent } from './signuppage/signuppage.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
     HomeComponent,
     CustomerComponent,
     SignuppageComponent,
-    LoginSuccessComponent
+    LoginSuccessComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

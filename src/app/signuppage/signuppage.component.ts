@@ -52,7 +52,7 @@ this._servicetospringboot.addUser(this.userdetails)
   (data:UserDetails)=>{
     console.log(JSON.stringify(data));
     this.singupResponse=data;
-    console.log(data.loginId);
+    //console.log(data.id);
     console.log(data.password);
     console.log(this.singupResponse);
 
@@ -61,7 +61,7 @@ this._servicetospringboot.addUser(this.userdetails)
   document.getElementById("success").innerHTML="Hi..."+this.userdetails.name+" something went wrong . Please try again";
  }
   else{
-    alert("Please note Login id and password for login purpose. Login Id: "+this.singupResponse.loginId+
+    alert("Please note Login id and password for login purpose. Login Id: "+this.singupResponse.id+
     "  Password:  "+this.singupResponse.password);
     this.LocalStorageService.store("custId",this.singupResponse.id);
   this.router.navigate(['/Login'])

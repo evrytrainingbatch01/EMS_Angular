@@ -15,11 +15,12 @@ customerId;
   }
   checkLoginCredentials(loginDetails:LoginDetails):Observable<LoginDetails>{
     
-    alert("request reached to service method");
-    alert(this.customerId);
-    alert(JSON.stringify(loginDetails));
+    //alert("request reached to service method");
+    //alert(this.customerId);
+   // alert(JSON.stringify(loginDetails));
     
-  return this.httpClient.post<LoginDetails>("http://192.168.0.149:3759/login/"+this.customerId+"/"+loginDetails.uname+"/"+loginDetails.password,
+  //return this.httpClient.post<LoginDetails>("http://192.168.0.149:3759/login/"+this.customerId+"/"+loginDetails.uname+"/"+loginDetails.password,
+  return this.httpClient.post<LoginDetails>("http://192.168.0.149:3759/login/"+loginDetails.uname+"/"+loginDetails.password,
   {
     headers: new HttpHeaders({
    'Content-Type':'application/json'

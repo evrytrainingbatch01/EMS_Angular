@@ -123,18 +123,13 @@ forgotPassword(content){
 SuccessMessage=false;
 responseOfResetPassword;
 ResetPassword(data){
-  alert(JSON.stringify(data.value));
+ // alert(JSON.stringify(data.value));
   //call service------
   this.responseOfResetPassword= this.LoginService.ResetPassword(data.value)
   .subscribe(
-    
     data  => {
-    
     console.log("PUT Request is successful ", data);
     this.responseOfResetPassword=data;
-    //alert(this.responseOfResetPassword);
-
-      //alert(JSON.stringify(this.responseOfResetPassword));
   if(this.responseOfResetPassword){
     this.alertConfig.type='success';
     this.SuccessMessage=true;
@@ -142,10 +137,8 @@ ResetPassword(data){
     alert("some thing went wrong");
   }
     },
-    
     error  => {
       console.log("Error", error);
-     // this.resetpass=false;
       alert("some thing went wrong");
     }
     
