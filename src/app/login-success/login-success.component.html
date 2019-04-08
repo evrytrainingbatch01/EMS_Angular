@@ -69,7 +69,7 @@
   <form [formGroup]="transferDetails"(ngSubmit)="transferMoney(transferDetails)">
     <h1>Transfer Money</h1>
     <table>
-    <tr><th>From Account:</th><td><input type="text"  name="fromAccount" value={{customer_id}} formControlName="fromAccount"></td></tr>
+    <tr><th>From Account:</th><td><input type="text"  name="fromAccount" value="{{customer_id}}" formControlName="fromAccount"></td></tr>
     <tr><th>to Beneficiary Account: </th><td><input type="text"  name="beneficiaryAccount" formControlName="beneficiaryAccount"></td></tr>
     <tr><th>Amount:</th><td><input type="text"  name="amount" formControlName="amount"><td></tr>
     <tr><td></td><td><button type="submit">Transfer</button></td></tr>

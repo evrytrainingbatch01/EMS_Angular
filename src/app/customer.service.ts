@@ -4,6 +4,8 @@ import { UserDetails } from './util/userDetails.model';
 import { Observable } from 'rxjs';
 import { AccountDetails } from './util/account_details';
 import {LocalStorageService} from 'ngx-webstorage';
+import { TransferStatus } from './util/transferstatus.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -76,5 +78,20 @@ getAccountDetails():Observable<AccountDetails>
 getBalance()
 {
   return this.http.get("http://192.168.0.149:3759/checkBalance/"+this.acc_id);
+}
+
+transferMoneyS(transferDetails):Observable<TransferStatus>
+{
+  console.log(transferDetails);
+  console.log(transferDetails.fromAccount);
+  console.log(transferDetails.beneficiaryAccount);
+  console.log(transferDetails.amount);
+ return this.http.put<TransferStatus>("http://192.168.0.149:3759/transferMoney/"+transferDetails.fromAccount+"/"+transferDetails.beneficiaryAccount+"/"+transferDetails.amount, transferDetails,
+ {
+  headers: new HttpHeaders({
+ 'Content-Type':'application/json'
+   })
+  }
+  );
 }
 }

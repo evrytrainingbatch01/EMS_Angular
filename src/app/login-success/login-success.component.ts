@@ -19,6 +19,7 @@ export class LoginSuccessComponent implements OnInit {
   balance=false;
   transactions=false;
   transferDetails;
+  transferStatus;
   constructor(private _servicetospringboot: CustomerService,private LocalStorageService:LocalStorageService,private formbuilder:FormBuilder) {
 
     this.customer_name=this.LocalStorageService.retrieve("custname");
@@ -28,7 +29,7 @@ export class LoginSuccessComponent implements OnInit {
   ngOnInit() {
 
     this.transferDetails=this.formbuilder.group({
-      fromAccount:['',Validators.required],
+      fromAccount:[this.customer_id,Validators.required],
       beneficiaryAccount:[''],
       amount:[''],
       
@@ -131,5 +132,36 @@ checktransactions(){
 transferMoney(data)
 {
 console.log(data.value);
+this._servicetospringboot.transferMoneyS(data.value)
+.subscribe(
+  (data)=>{
+    console.log(JSON.stringify(data));
+    this.transferStatus=data;
+    
+    
+    
+
+    if(this.transferStatus)
+ {
+  alert("Money has been transfered successfully to the beneficiary account ");
+ }
+ else{
+   alert("Something went wrong . please try again ")
+ }
+  
+ },
+ error  => {
+    
+  console.log("Error", error);
+  if(error!=null)
+ {
+  alert("Something went wrong . plesae try again ");
+ }
+  
+  }
+
+  
+ );
 }
+
 }

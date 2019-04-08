@@ -37,7 +37,7 @@ singupResponse=null;
   }
   onClick(data)
   {
-console.log(data);
+ console.log(data);
 
 this.userdetails.name=data.value.name;
 this.userdetails.emailId=data.value.emailId;
@@ -46,13 +46,13 @@ this.userdetails.address=data.value.address;
 this.userdetails.city=data.value.city;
 this.userdetails.country=data.value.country;
 this.userdetails.mobileNo=data.value.mobileNo;
-alert(JSON.stringify(this.userdetails));
+// alert(JSON.stringify(this.userdetails));
 this._servicetospringboot.addUser(this.userdetails)
 .subscribe(
   (data:UserDetails)=>{
-    console.log(JSON.stringify(data));
+     console.log(JSON.stringify(data));
     this.singupResponse=data;
-    //console.log(data.id);
+    console.log(data.id);
     console.log(data.password);
     console.log(this.singupResponse);
 
