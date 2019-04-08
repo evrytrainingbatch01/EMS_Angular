@@ -1,10 +1,5 @@
-/* Global class for header */
 .jumbotronDesign{
     color: white;
+    /* background-color: rgba(red, green, blue, 0.4); */
     background-color: rgb(91, 38, 141);
 }
-/* image height Design */
-.imgDesign {
-    height: 200px;
-    background: #aaa;
-  }

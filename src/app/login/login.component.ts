@@ -18,9 +18,6 @@ export class LoginComponent implements OnInit {
 
   loginCredentials:FormGroup;
   loginResponse;
-  UpdatedCustomerPassword;
-  SuccessMessage=false;
-responseOfResetPassword;
 loginDetails:LoginDetails=null;
   constructor(private FormBuilder:FormBuilder,private router:Router,private LoginService:LoginService,private modalService: NgbModal,private alertConfig:NgbAlertConfig,private LocalStorageService:LocalStorageService) { }
 
@@ -32,10 +29,54 @@ loginDetails:LoginDetails=null;
   }
   
   
- //the function for submitting the login form 
+  response;
+/*   LoginUserSubmit(data){
+console.log(data); */
+ //this.loginDetails.uname=data.value.uname;
+// this.loginDetails.password=data.value.password;
+//call service
+/* alert(data.value.uname);
+if(data.value.uname!=null && data.value.password!=null){
+  alert("alkdassdlksajdlkjsdajkldlkjdjajdjsakjlkjadk") */
+ /*  this.LoginService.checkLoginCredentials(this.loginDetails)
+  .subscribe(
+    data  => {
+    console.log("POST Response is ", data);
+    this.loginResponse=data;
+    console.log(JSON.stringify(this.loginResponse));
+    if(this.loginResponse.uname==null)
+    {
+    //  document.getElementById("success").innerHTML="Hi..."+this.userdetails.name+" something went wrong . Please try again";
+  alert("Username or Password entered are wrong . please verify and try again.") ; 
+  }
+     else{
+      //  alert("Please note Login id and password for login purpose. Login Id: "+this.singupResponse.loginId+
+      //  "  Password:  "+this.singupResponse.password);
+     this.router.navigate(['/LoginSuccess'])
+     }
+
+    },
+    error  => {
+    
+    console.log("Error", error);
+    
+    }
+    
+    ); 
+     */
+ /*  }else{
+    
+    alert("Please make sure to enter the username and password before submitting ");
+
+   
+  }   */
+  
+  
+//}
+
 LoginUserSubmit(data){
 console.log(data.value);
-//call service------ for check Login Credentials
+//call service
 if(data.value.uname!=null && data.value.password ){
 this.LoginService.checkLoginCredentials(data.value)
 .subscribe(
@@ -69,7 +110,7 @@ alert(" Login or password Empty Please give valid Credentials !! ");
 
 }
 
-
+UpdatedCustomerPassword;
 forgotPassword(content){
   alert("want to change password");
   this.modalService.open(content);
@@ -78,10 +119,12 @@ forgotPassword(content){
     newpassword:new FormControl()
     }) 
 }
- //the function for  submitting the Reset Password form 
+
+SuccessMessage=false;
+responseOfResetPassword;
 ResetPassword(data){
- 
-  //call service------for Reset Password
+ // alert(JSON.stringify(data.value));
+  //call service------
   this.responseOfResetPassword= this.LoginService.ResetPassword(data.value)
   .subscribe(
     data  => {
@@ -100,8 +143,10 @@ ResetPassword(data){
     }
     
     );
+
+
+
 }
-//close the popup
 close(){
 
   this.alertConfig.dismissible=true;
