@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders ,HttpClient} from '@angular/common/http';
 import { UserDetails } from './util/userDetails.model';
 import { Observable } from 'rxjs';
+import { AccountDetails } from './util/account_details';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +62,15 @@ addUser(user:UserDetails):Observable<UserDetails>
   'Content-Type':'application/json'
     })
    }); 
+}
+
+getAccountDetails():Observable<AccountDetails>
+{
+  return this.http.get<AccountDetails>("http://localhost:3759/getAccountDetails/<account_id>");
+}
+
+getBalance():Observable<AccountDetails>
+{
+  return this.http.get<AccountDetails>("http://localhost:3759/checkBalance/<account_id>");
 }
 }
